@@ -34,6 +34,8 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- Animate on Scroll -->
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -72,7 +74,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-7">
-                <div class="header-content">
+                <div data-aos="fade-right" class="header-content">
                     <div class="header-content-inner">
                         <h1>Tea Farmers and Fans can finally find a common cause!</h1>
                         <a href="#download" class="btn btn-outline btn-xl page-scroll">Download the TeaToken Wallet
@@ -81,7 +83,7 @@
                 </div>
             </div>
             <div class="col-sm-5">
-                <div class="header-content">
+                <div data-aos="fade-left" class="header-content">
                     <div class="header-content-inner">
                         <img src="img/demo-screen-1.png" class="img-responsive home-logo" alt="tea token">
                     </div>
@@ -108,7 +110,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h2 class="section-heading">Discover what all the buzz is about!</h2>
+                <h2 data-aos="fade-down" class="section-heading">Discover what all the buzz is about!</h2>
                 <p>Our wallet will be available on any mobile device! Download now to get started!</p>
                 <div class="badges">
                     <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
@@ -149,14 +151,14 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="feature-item">
+                            <div data-aos="flip-left" class="feature-item">
                                 <i class="icon-screen-smartphone text-primary"></i>
                                 <h3>Device Agnostic</h3>
                                 <p class="text-muted">Wallets for tea lovers of all devices!</p>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="feature-item">
+                            <div data-aos="flip-right" data-aos-delay="300" class="feature-item">
                                 <i class="icon-camera text-primary"></i>
                                 <h3>Farmer Pics</h3>
                                 <p class="text-muted">Donate as much or as little as you want to help these starving
@@ -166,14 +168,14 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="feature-item">
+                            <div data-aos="flip-left" class="feature-item">
                                 <i class="icon-present text-primary"></i>
                                 <h3>Free to Use</h3>
                                 <p class="text-muted">P2P Tea parties!</p>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="feature-item">
+                            <div data-aos="flip-right" data-aos-delay="300" class="feature-item">
                                 <i class="icon-lock-open text-primary"></i>
                                 <h3>Open Source</h3>
                                 <p class="text-muted">At least I'd like to think so!</p>
@@ -189,8 +191,14 @@
 <section class="cta">
     <div class="cta-content">
         <div class="container">
-            <h2>Stop waiting.<br>Start sipping.<br>Start sharing.</h2>
-            <a href="#contact" class="btn btn-outline btn-xl page-scroll">Let's Get Started!</a>
+            <h2>
+                <span data-aos="fade-down">Stop waiting.</span>
+                <br>
+                <span data-aos="fade-down">Start sipping.</span>
+                <br>
+                <span data-aos="fade-down">Start sharing.</span>
+            </h2>
+            <a href="#contact" class="btn btn-outline btn-xl page-scroll" data-aos="flip-left">Let's Get Started!</a>
         </div>
     </div>
     <div class="overlay"></div>
@@ -198,15 +206,15 @@
 
 <section id="contact" class="contact bg-primary">
     <div class="container">
-        <h2>We <i class="fa fa-heart"></i> new friends!</h2>
+        <h2>We <i data-aos="flip-left" class="fa fa-heart"></i> new friends!</h2>
         <ul class="list-inline list-social">
-            <li class="social-twitter">
+            <li data-aos="flip-left" class="social-twitter">
                 <a href="#"><i class="fa fa-twitter"></i></a>
             </li>
-            <li class="social-facebook">
+            <li data-aos="flip-left" data-aos-delay="100" class="social-facebook">
                 <a href="#"><i class="fa fa-facebook"></i></a>
             </li>
-            <li class="social-google-plus">
+            <li data-aos="flip-left" data-aos-delay="200" class="social-google-plus">
                 <a href="#"><i class="fa fa-google-plus"></i></a>
             </li>
         </ul>
@@ -229,9 +237,6 @@
         </ul>
     </div>
 </footer>
-<script>
-    document.querySelector('.year').textContent = new Date().getFullYear().toString()
-</script>
 <!-- jQuery -->
 <script src="lib/jquery/jquery.min.js"></script>
 
@@ -244,6 +249,17 @@
 <!-- Theme JavaScript -->
 <script src="js/new-age.min.js"></script>
 
+<!-- Animate on Scroll -->
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+
+<script>
+    // Dynamic date
+    document.querySelector('.year').textContent = new Date().getFullYear().toString()
+
+    AOS.init({
+      disable: 'mobile'
+    });
+</script>
 </body>
 
 </html>

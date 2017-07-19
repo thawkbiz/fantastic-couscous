@@ -85,23 +85,11 @@
             <div class="col-sm-5">
                 <div data-aos="fade-left" class="header-content">
                     <div class="header-content-inner">
-                        <img src="img/demo-screen-1.png" class="img-responsive home-logo" alt="tea token">
+                        <div class="image-wrapper">
+                            <img src="img/demo-screen-1.png" class="img-responsive" alt="tea token">
+                        </div>
                     </div>
                 </div>
-                <!--<div class="device-container">-->
-                    <!--<div class="device-mockup iphone6_plus portrait white">-->
-                        <!--<div class="device">-->
-                            <!--<div class="screen">-->
-                                <!--&lt;!&ndash; Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! &ndash;&gt;-->
-                                <!--<img src="img/demo-screen-1.png" class="img-responsive" alt="">-->
-                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                                <!--<div class="button">-->
-                                    <!--&lt;!&ndash; You can hook the "home button" to some JavaScript events or just remove it &ndash;&gt;-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
             </div>
         </div>
 </header>
@@ -110,8 +98,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h2 data-aos="fade-down" class="section-heading">Discover what all the buzz is about!</h2>
-                <p>Our wallet will be available on any mobile device! Download now to get started!</p>
+                <h2 data-aos="fade-down" class="section-heading">
+                    Discover what all the buzz is about!
+                </h2>
+                <p>
+                    Our wallet will be available on any mobile device!
+                    Download now to get started!
+                </p>
                 <div class="badges">
                     <a class="badge-link" href="#"><img src="img/google-play-badge.svg" alt=""></a>
                     <a class="badge-link" href="#"><img src="img/app-store-badge.svg" alt=""></a>
@@ -127,7 +120,11 @@
             <div class="col-lg-12 text-center">
                 <div class="section-heading">
                     <h2>Unlimited Features, Unlimited Tea</h2>
-                    <p class="text-muted">Check out Tea's health benefits!</p>
+                    <p class="text-muted">
+                        For thousands of years tea has been a simple, enjoyable, relaxing staple in our diets.
+                        <br>
+                        We think it's time getting it got an upgrade.
+                    </p>
                     <hr>
                 </div>
             </div>
@@ -152,33 +149,46 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div data-aos="flip-left" class="feature-item">
-                                <i class="icon-screen-smartphone text-primary"></i>
-                                <h3>Device Agnostic</h3>
-                                <p class="text-muted">Wallets for tea lovers of all devices!</p>
+                                <i class="icon-wallet text-primary"></i>
+                                <h3>Device Wallet</h3>
+                                <p class="text-muted">
+                                    Our wallet will be made available for Windows, OSX and Linux,
+                                    using the latest Ethereum technology.
+                                </p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div data-aos="flip-right" data-aos-delay="300" class="feature-item">
-                                <i class="icon-camera text-primary"></i>
-                                <h3>Farmer Pics</h3>
-                                <p class="text-muted">Donate as much or as little as you want to help these starving
-                                    people!</p>
+                                <i class="icon-globe text-primary"></i>
+                                <h3>Global Trade</h3>
+                                <p class="text-muted">
+                                    Small businesses will be able to support artisan teas from countries all over the
+                                    world,
+                                    driving business as demand grows for this healthy coffee alternative.
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div data-aos="flip-left" class="feature-item">
-                                <i class="icon-present text-primary"></i>
-                                <h3>Free to Use</h3>
-                                <p class="text-muted">P2P Tea parties!</p>
+                                <i class="icon-cup text-primary"></i>
+                                <h3>Brew Perfect</h3>
+                                <p class="text-muted">
+                                    The freedom of choice is to know what you consume.
+                                    Connect directly with farmers to ensure your tea is grown to your preference.
+                                </p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div data-aos="flip-right" data-aos-delay="300" class="feature-item">
-                                <i class="icon-lock-open text-primary"></i>
-                                <h3>Open Source</h3>
-                                <p class="text-muted">At least I'd like to think so!</p>
+                                <i class="icon-organization text-primary"></i>
+                                <h3>Shipping Logistics</h3>
+                                <p class="text-muted">
+                                    Tea token aims to become an essential player in the commodities market,
+                                    to meet growing demand and help create direct pathways between consumer and
+                                    providers.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -253,12 +263,12 @@
 <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
 
 <script>
-    // Dynamic date
-    document.querySelector('.year').textContent = new Date().getFullYear().toString()
+  // Dynamic date
+  document.querySelector('.year').textContent = new Date().getFullYear().toString()
 
-    AOS.init({
-      disable: 'mobile'
-    });
+  AOS.init({
+    disable: 'mobile'
+  })
 </script>
 </body>
 

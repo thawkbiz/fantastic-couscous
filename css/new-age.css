@@ -31,6 +31,19 @@
 .navbar-default.affix a {
   text-shadow: none;
 }
+a.whitepaper-link {
+  border: 1px solid white;
+  padding: 10px;
+  color: white;
+  text-decoration: none;
+  font-size: x-large;
+}
+a.whitepaper-link:hover {
+  text-decoration: none;
+  color: saddlebrown;
+  background: white;
+  transition-duration: 0.4s;
+}
 html,
 body {
   height: 100%;

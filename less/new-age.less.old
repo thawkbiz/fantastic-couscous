@@ -372,7 +372,7 @@ section.contact {
 footer {
     background-color: @gray-darker;
     padding: 25px 0;
-    color: white;
+    color: fade(white, 30%);
     text-align: center;
     p {
         font-size: 12px;
@@ -383,13 +383,12 @@ footer {
         li {
             a {
                 font-size: 12px;
-                color: white;
+                color: fade(white, 30%);
                 &:hover,
                 &:focus,
                 &:active,
                 &.active {
-                    text-decoration: underline;
-                    color: white;
+                    text-decoration: none;
                 }
             }
         }
@@ -465,4 +464,3 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: @gray-darker;
 }
-

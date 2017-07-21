@@ -21,12 +21,6 @@
 .header-content a {
   text-shadow: 1px 1px 1px #000000;
 }
-.image-wrapper {
-  background: rgba(255, 255, 255, 0.3);
-  height: auto;
-  width: auto;
-  padding: 20px;
-}
 /* Remove shadow on scroll */
 .navbar-default.affix a {
   text-shadow: none;
@@ -398,7 +392,7 @@ section.contact ul.list-social li.social-google-plus a:hover {
 footer {
   background-color: #222222;
   padding: 25px 0;
-  color: rgba(255, 255, 255, 0.3);
+  color: white;
   text-align: center;
 }
 footer p {
@@ -410,13 +404,14 @@ footer ul {
 }
 footer ul li a {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.3);
+  color: white;
 }
 footer ul li a:hover,
 footer ul li a:focus,
 footer ul li a:active,
 footer ul li a.active {
-  text-decoration: none;
+  text-decoration: underline;
+  color: white;
 }
 .bg-primary {
   background: #4CAF50;

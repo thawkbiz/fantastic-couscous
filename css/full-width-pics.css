@@ -1,0 +1,47 @@
+header {
+    min-height: 30rem;
+}
+
+.image-bg-fluid-height,
+.image-bg-fixed-height {
+    text-align: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.image-bg-fluid-height {
+    background: url('../img/bg-pattern.jpg') no-repeat center center scroll;
+}
+
+.image-bg-fixed-height {
+    background: url('../img/bg-pattern.jpg') no-repeat center center scroll;
+    height: 450px;
+}
+
+.img-center {
+    margin: 5rem auto;
+}
+
+section {
+    padding: 1rem;
+}
+section h2 {
+    font-size: 3.5rem;
+    margin: 4rem 0 1rem;
+}
+
+.section-heading {
+    margin: 0;
+    font-size: 4em;
+}
+
+.section-lead {
+    margin: 30px 0;
+}
+
+.section-paragraph {
+    margin: 30px 0;
+}
+

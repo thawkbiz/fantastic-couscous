@@ -295,8 +295,9 @@ if (isset($_POST[$form_names['email']])) {
                       <div class="form-group">
                         <label for="<?php print $form_names['email']; ?>" class="control-label">Email address</label>
                         <input type="text" class="form-control" id="<?php print $form_names['email']; ?>" name="<?php print $form_names['email']; ?>" value="" required="" title="Please enter you email" placeholder="example@gmail.com">
-                        <div class="g-recaptcha" data-sitekey="6LdcqioUAAAAANMVAi3QpFPAkzW_5WU4aUdxRnuo"></div>
                         <span class="help-block"></span>
+
+                        <div class="g-recaptcha" data-sitekey="6LdcqioUAAAAANMVAi3QpFPAkzW_5WU4aUdxRnuo"></div>
                       </div>
                       <input type="hidden" name="<?php print $token_id; ?>" value="<?php print $token_value; ?>" />
                       <button type="submit" class="btn btn-success btn-block">Submit</button>
@@ -501,7 +502,7 @@ if (isset($_POST[$form_names['email']])) {
             $('#loginForm').on('submit', function(e){
               if(!isEmail($('#<?php print $form_names['email']; ?>').value)) {
                 e.preventDefault();
-                $('.help-block').text('Email must be valid.');
+                $('.help-block').text('Email must be valid.').attr('role', 'alert');
               }
             });
           </script>

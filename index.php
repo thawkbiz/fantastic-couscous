@@ -257,7 +257,7 @@ if (isset($_POST[$form_names['email']])) {
                   <div class="col-xs-6">
                     <div class="well">
 
-                      <form id="loginForm" method="POST" action="/">
+                      <form id="loginForm" method="POST" action="index.php">
                         <div class="form-group">
                           <label for="<?php print $form_names['email']; ?>" class="control-label">Email address</label>
                           <input type="text" class="form-control" id="<?php print $form_names['email']; ?>" name="<?php print $form_names['email']; ?>" value="" required="" title="Please enter you email" placeholder="example@gmail.com">

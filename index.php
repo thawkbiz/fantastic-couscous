@@ -169,6 +169,11 @@ if (isset($_POST[$form_names['email']])) {
     <?php
     if ($success === TRUE): ?>
     <!-- Modal -->
+    <script type="text/javascript">
+      $(window).on('load',function(){
+        $('#myModal').modal('show');
+      });
+    </script>
     <div id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
 

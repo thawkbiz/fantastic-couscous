@@ -500,7 +500,7 @@ if (isset($_POST[$form_names['email']])) {
             }
 
             $('#loginForm').on('submit', function(e){
-              if(!isEmail($('#<?php print $form_names['email']; ?>').value)) {
+              if(!isEmail($('#<?php print $form_names['email']; ?>').value())) {
                 e.preventDefault();
                 $('.help-block').text('Email must be valid.').attr('role', 'alert');
               }
@@ -511,7 +511,7 @@ if (isset($_POST[$form_names['email']])) {
 
             // Check email every time they change it.
             $('#<?php print $form_names['email']; ?>').on('change', function(e){
-              if(!isEmail($('#<?php print $form_names['email']; ?>').value)) {
+              if(!isEmail($('#<?php print $form_names['email']; ?>').value())) {
                 $('.help-block').text('Email must be valid.').attr('role', 'alert');
               }
               else {

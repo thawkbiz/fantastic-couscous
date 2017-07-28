@@ -485,38 +485,43 @@ if (isset($_POST[$form_names['email']])) {
         if ($success === TRUE): ?>
           <!-- Modal -->
           <script type="text/javascript">
-            $(window).on('load',function(){
-              $('#myModal').modal('show');
+            jQuery(function($) {
+              $(window).on('load', function(){
+                $('#myModal').modal('show');
+              });
             });
           </script>
       <?php
         else: ?>
           <!-- Validate email -->
           <script type="text/javascript">
+            jQuery(function($) {
+              $(window).on('load', function(){
+                function isEmail(email) {
+                  var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
+                  return pattern.test(email);
+                }
 
-            function isEmail(email) {
-              var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-              return pattern.test(email);
-            }
+                $('#loginForm').on('submit', function(e){
+                  if(!isEmail($('#<?php print $form_names['email']; ?>').value())) {
+                    e.preventDefault();
+                    $('.help-block').text('Email must be valid.').attr('role', 'alert');
+                  }
+                  else {
+                    $(this).unbind('submit').submit();
+                  }
+                });
 
-            $('#loginForm').on('submit', function(e){
-              if(!isEmail($('#<?php print $form_names['email']; ?>').value())) {
-                e.preventDefault();
-                $('.help-block').text('Email must be valid.').attr('role', 'alert');
-              }
-              else {
-                $(this).unbind('submit').submit();
-              }
-            });
-
-            // Check email every time they change it.
-            $('#<?php print $form_names['email']; ?>').on('change', function(e){
-              if(!isEmail($('#<?php print $form_names['email']; ?>').value())) {
-                $('.help-block').text('Email must be valid.').attr('role', 'alert');
-              }
-              else {
-                $('.help-block').text('').attr('role', '');
-              }
+                // Check email every time they change it.
+                $('#<?php print $form_names['email']; ?>').on('change', function(e){
+                  if(!isEmail($('#<?php print $form_names['email']; ?>').value())) {
+                    $('.help-block').text('Email must be valid.').attr('role', 'alert');
+                  }
+                  else {
+                    $('.help-block').text('').attr('role', '');
+                  }
+                });
+              });
             });
           </script>
       <?php

@@ -40,7 +40,7 @@ if (isset($_POST[$form_names['email']])) {
 
         //UPDATE: if your check pass, go on
         if ($response->success) {
-            $myFile = "../emails.txt";
+            $myFile = "emails.txt";
             $fh = fopen($myFile, 'a') or die("can't open file");
             $stringData = $email . "\n";
             fwrite($fh, $stringData);

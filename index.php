@@ -480,12 +480,29 @@ if (isset($_POST[$form_names['email']])) {
         })
       </script>
 
-       <?php
+      <?php
         if ($success === TRUE): ?>
           <!-- Modal -->
           <script type="text/javascript">
             $(window).on('load',function(){
               $('#myModal').modal('show');
+            });
+          </script>
+      <?php
+        else: ?>
+          <!-- Validate email -->
+          <script type="text/javascript">
+
+            function isEmail(email) {
+              var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+              return regex.test(email);
+            }
+
+            $('#loginForm').on('submit', function(e){
+              if(!isEmail($('#<?php print $form_names['email']; ?>').value)) {
+                e.preventDefault();
+                $('.help-block').text('Email must be valid.');
+              }
             });
           </script>
       <?php

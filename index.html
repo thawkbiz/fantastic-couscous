@@ -1,64 +1,4 @@
-<?php
-session_start();
-include 'csrf.class.php';
-
-$csrf = new csrf();
-
-$success = FALSE;
-
-// Generate Token Id and Valid
-$token_id = $csrf->get_token_id();
-$token_value = $csrf->get_token($token_id);
-
-// Generate Random Form Names
-$form_names = $csrf->form_names(array('email'), false);
-
-if (isset($_POST[$form_names['email']])) {
-  // Check if token id and token value are valid.
-  if($csrf->check_valid('post')) {
-    // Get the Form Variables.
-    $email = trim($_POST[$form_names['email']]);
-
-    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-
-    // Form Function Goes Here
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
-        // Ok, the email should be valid, but check analytics too.
-        //recaptcha test
-      $curl = curl_init();
-      curl_setopt_array($curl, [
-        CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
-        CURLOPT_POST => 1,
-        CURLOPT_RETURNTRANSFER => 1,
-        CURLOPT_FOLLOWLOCATION => 1,
-        CURLOPT_POSTFIELDS => [
-        'secret' => '6LdcqioUAAAAAPe97vLFsEtLTm6c1mnMVJc5E0ec',
-        'response' => $_POST['g-recaptcha-response'],
-        ],
-        ]);
-      $response = json_decode(curl_exec($curl));
-
-        //UPDATE: if your check pass, go on
-      if ($response->success) {
-        $myFile = "../emails.txt";
-        $fh = fopen($myFile, 'a') or die("can't open file");
-        $stringData = $email . "\n";
-        fwrite($fh, $stringData);
-        fclose($fh);
-        $success = TRUE;
-      } else {
-            // died("Recaptcha missing.");
-      }
-
-    }
-  }
-    // Regenerate a new random value for the form.
-  $form_names = $csrf->form_names(array('email'), true);
-}
-
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -166,32 +106,6 @@ if (isset($_POST[$form_names['email']])) {
 
   <body id="page-top">
 
-    <?php
-    if ($success === TRUE): ?>
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Email Registered</h4>
-          </div>
-          <div class="modal-body">
-            <p>Thank you! Your email has been submitted.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <?php
-    endif;
-    ?>
-
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -277,49 +191,9 @@ if (isset($_POST[$form_names['email']])) {
         </div>
       </div>
 
-
-      <?php
-      if ($success !== TRUE): ?>
-
-        <div class="row">
-          <div class="modal-content col-sm-10 col-sm-offset-1" style="color:black; margin-top: 2rem;">
-            <div class="modal-header">
-              <h3 class="modal-title" id="myModalLabel">Receive email updates!</h3>
-            </div>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-xs-6">
-                  <div class="well">
-
-                    <form id="loginForm" method="POST" action="index.php">
-                      <div class="form-group">
-                        <label for="<?php print $form_names['email']; ?>" class="control-label">Email address</label>
-                        <input type="text" class="form-control" id="<?php print $form_names['email']; ?>" name="<?php print $form_names['email']; ?>" value="" required="" title="Please enter you email" placeholder="example@gmail.com">
-                        <span class="help-block"></span>
-
-                        <div class="g-recaptcha" data-sitekey="6LdcqioUAAAAANMVAi3QpFPAkzW_5WU4aUdxRnuo"></div>
-                      </div>
-                      <input type="hidden" name="<?php print $token_id; ?>" value="<?php print $token_value; ?>" />
-                      <button type="submit" class="btn btn-success btn-block">Submit</button>
-                    </form>
-                  </div>
-                </div>
-                <div class="col-xs-6">
-                  <p class="lead">Sign Up for Email Alerts</p>
-                  <ul class="list-unstyled text-left" style="line-height: 2">
-                    <li><span class="glyphicon glyphicon-ok"></span> Get the latest news about TeaToken</li>
-                    <li><span class="glyphicon glyphicon-ok"></span> Get alerts about the upcoming ICO</li>
-                    <li><span class="glyphicon glyphicon-ok"></span> We will never sell or rent your information!</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      <?php
-      endif;
-      ?>
+      <div class="row">
+        <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://app.mailjet.com/widget/iframe/2uVp/3L3" class="col-sm-8 col-sm-offset-2" style="min-height: 30rem;"></iframe>
+      </div>
 
     </section>
 
@@ -480,54 +354,6 @@ if (isset($_POST[$form_names['email']])) {
           disable: 'mobile'
         })
       </script>
-
-      <?php
-        if ($success === TRUE): ?>
-          <!-- Modal -->
-          <script type="text/javascript">
-            jQuery(function($) {
-              $(window).on('load', function(){
-                $('#myModal').modal('show');
-              });
-            });
-          </script>
-      <?php
-        else: ?>
-          <!-- Validate email -->
-          <script type="text/javascript">
-            jQuery(function($) {
-              $(window).on('load', function(){
-                function isEmail(email) {
-                  var pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
-                  return pattern.test(email);
-                }
-
-                $('#loginForm').on('submit', function(e){
-                  if(!isEmail($('#<?php print $form_names['email']; ?>').val())) {
-                    e.preventDefault();
-                    $('.help-block').text('Email must be valid.').attr('role', 'alert');
-                  }
-                  else {
-                    $(this).unbind('submit').submit();
-                  }
-                });
-
-                // Check email every time they change it.
-                $('#<?php print $form_names['email']; ?>').on('change', function(e){
-                  if(!isEmail($('#<?php print $form_names['email']; ?>').val())) {
-                    $('.help-block').text('Email must be valid.').attr('role', 'alert');
-                  }
-                  else {
-                    $('.help-block').text('').attr('role', '');
-                  }
-                });
-              });
-            });
-          </script>
-      <?php
-        endif;
-      ?>
-
 
       <script>
         function getTimeRemaining(endtime) {
